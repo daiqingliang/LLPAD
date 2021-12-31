@@ -4,8 +4,10 @@ A text file viewer for very very big size text file. Easy to open a file bigger 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.riversun/llpad/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.riversun/llpad)
 
 It is licensed under [MIT](https://opensource.org/licenses/MIT).
+## 可以从[Releases](https://github.com/daiqingliang/LLPAD/releases)中下载以发布的jar包，运行需要java 1.8+的环境。
 
 # Features
+## 
 ## *Gigabyte* class text files can be opened easily and lightly.
 
 - <h3>Can I open 10GB text file? Yes, No problem.</h3>
@@ -72,4 +74,6 @@ $ java -jar llpad-0.5.5-jar-with-dependencies.jar
  ```
 
 ## download jar
+从[Releases](https://github.com/daiqingliang/LLPAD/releases)中下载jar包，运行需要java的环境才能运行    
+### Older-download:  
  [llpad-0.5.5-jar-with-dependencies.jar](http://repo1.maven.org/maven2/org/riversun/llpad/0.5.5/llpad-0.5.5-jar-with-dependencies.jar)[[MD5]](http://repo1.maven.org/maven2/org/riversun/llpad/0.5.5/llpad-0.5.5-jar-with-dependencies.jar.md5)
