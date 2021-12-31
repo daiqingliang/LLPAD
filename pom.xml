@@ -90,10 +90,38 @@
 	</distributionManagement>
 	<build>
 		<plugins>
+			<!-- 配置打可执行的jar -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>1.4</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.handlers</resource>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.schemas</resource>
+								</transformer>
+								<!-- 执行主类入口-->
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>org.riversun.llpad.AppMain</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-
+				<version>3.1</version>
 				<configuration>
 
 					<source>1.8</source>
@@ -131,28 +159,29 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<author>true</author>
-					<source>1.7</source>
-					<show>protected</show>
-					<encoding>UTF-8</encoding>
-					<charset>UTF-8</charset>
-					<docencoding>UTF-8</docencoding>
-					<additionalparam>-Xdoclint:none</additionalparam>
-					<additionalJOption>-J-Duser.language=en</additionalJOption>
-				</configuration>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-javadoc-plugin</artifactId>-->
+<!--				<version>3.2.0</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>attach-javadocs</id>-->
+<!--						<goals>-->
+<!--							<goal>jar</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--				<configuration>-->
+<!--					<author>true</author>-->
+<!--					<source>1.7</source>-->
+<!--					<show>protected</show>-->
+<!--					<encoding>UTF-8</encoding>-->
+<!--					<charset>UTF-8</charset>-->
+<!--					<docencoding>UTF-8</docencoding>-->
+<!--&lt;!&ndash;					<additionalparam>-Xdoclint:none</additionalparam>&ndash;&gt;-->
+<!--					<additionalJOption>-J-Duser.language=en</additionalJOption>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 			<!-- create jar with dependencies -->
 
 			<plugin>

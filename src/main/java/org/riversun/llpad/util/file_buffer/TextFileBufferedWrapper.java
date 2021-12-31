@@ -295,6 +295,11 @@ public class TextFileBufferedWrapper implements Disposable {
 
 				int cutStartIndex = firstPositionOfNewLine + 1;
 				int cutEndIndex = lastPositionOfNewLine;
+				// If this line is too long, cache text do not find "/r/n",
+				// then set the cutEndIndex is the cache text length
+				if (cutEndIndex == -1) {
+					cutEndIndex = textForView.length();
+				}
 
 				if (viewStartAddr == 0) {
 
